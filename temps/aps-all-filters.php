@@ -7,7 +7,7 @@ get_header();
 
 // get aps design settings
 $design = get_aps_settings('design');
-$template = 'main-catalog'; ?>
+$template = 'all-filters'; ?>
 	
 	<div class="aps-container">
 		<div class="aps-row clearfix">
@@ -138,6 +138,50 @@ $template = 'main-catalog'; ?>
 				// get compare page link
 				$comp_link = get_compare_page_link(); ?>
 				
+
+				<div class="aps-column">
+
+					<?php // get aps brands
+						$brands = get_all_aps_brands($settings['brands-sort']);
+						if ($brands) { ?>
+							<span class="aps-current-dp"><?php echo esc_html($settings['brands-dp']); ?></span>
+							<ul>
+								<?php foreach ($brands as $brand) { ?>
+									<li><a href="<?php echo esc_url(get_term_link($brand)); ?>"><?php echo esc_html($brand->name); ?></a></li>
+								<?php } ?>
+							</ul>
+							<span class="aps-select-icon aps-icon-down"></span>
+						<?php } ?>
+
+
+					<div class="aps-item-buttons">
+						<label class="aps-compare-btn" data-title="SONY A7R III A">
+							<input type="checkbox" class="aps-compare-cb" name="compare-id-4987" data-ctd="2004" value="4987">
+							<span class="aps-compare-stat"><i class="aps-icon-check"></i></span>
+							<span class="aps-compare-txt">Add to Compare</span>
+						</label>
+						<a class="aps-btn-small aps-add-cart" href="#" data-pid="4987" title="Add to Cart"><i class="aps-icon-cart"></i></a>
+					</div>
+
+					<div class="aps-brands-controls aps-dropdown">
+						<?php // get aps brands
+						$brands = get_all_aps_brands($settings['brands-sort']);
+						if ($brands) { ?>
+							<span class="aps-current-dp"><?php echo esc_html($settings['brands-dp']); ?></span>
+							<ul>
+								<?php foreach ($brands as $brand) { ?>
+									<li><a href="<?php echo esc_url(get_term_link($brand)); ?>"><?php echo esc_html($brand->name); ?></a></li>
+								<?php } ?>
+							</ul>
+							<span class="aps-select-icon aps-icon-down"></span>
+						<?php } ?>
+					</div>
+
+
+
+				</div>
+
+
 				<div class="aps-column">
 					<div class="aps-display-controls">
 						<span><?php esc_html_e('Display', 'aps-text'); ?>:</span>
@@ -160,7 +204,21 @@ $template = 'main-catalog'; ?>
 						</ul>
 						<span class="aps-select-icon aps-icon-down"></span>
 					</div>
-
+					
+					<div class="aps-brands-controls aps-dropdown">
+						<?php // get aps brands
+						$brands = get_all_aps_brands($settings['brands-sort']);
+						if ($brands) { ?>
+							<span class="aps-current-dp"><?php echo esc_html($settings['brands-dp']); ?></span>
+							<ul>
+								<?php foreach ($brands as $brand) { ?>
+									<li><a href="<?php echo esc_url(get_term_link($brand)); ?>"><?php echo esc_html($brand->name); ?></a></li>
+								<?php } ?>
+							</ul>
+							<span class="aps-select-icon aps-icon-down"></span>
+						<?php } ?>
+					</div>
+					
 					<div class="aps-cats-controls aps-dropdown">
 						<?php // get aps cats
 						$cats = get_all_aps_cats('count-h');
@@ -189,53 +247,11 @@ $template = 'main-catalog'; ?>
 							<span class="aps-select-icon aps-icon-down"></span>
 						<?php } ?>
 					</div>
-
 				</div>
-				<div class="aps-column" style="display: flex; flex-wrap: wrap;">
-					
-					
-					<!-- <div class="aps-brands-controls aps-dropdown"> -->
-						<?php // get aps brands
-						$brands = get_all_aps_brands($settings['brands-sort']);
-						if ($brands) { ?>
-							<!-- <span class="aps-current-dp"><?php echo esc_html($settings['brands-dp']); ?></span> -->
-								<?php foreach ($brands as $brand) { ?>
-
-									<div class="aps-display-contorls aps-item-buttons">
-										<label class="aps-compare-btn" data-title="<?= $brand->name ?>">
-											<input type="checkbox" class="aps-compare-cb" name="cat-id-<?= $brand->term_id?>" data-ctd="<?= $brand->term_id ?>" value="<?= $brand->term_id ?>">
-											<!--  name="filter-id-4987" data-ctd="2004" value="4987" -->
-											<span class="aps-compare-stat"><i class="aps-icon-check"></i></span>
-											<span class="aps-compare-txt"  style="margin-left: 4px; margin-right: 12px;"><?= $brand->name  ?></span>
-											<!-- <span class="aps-compare-txt"><?= implode(',', $brand->to_array())  ?></span> -->
-										</label>
-									</div>
 
 
 
-
-								<?php } ?>
-							<span class="aps-select-icon aps-icon-down"></span>
-						<?php } ?>
-					<!-- </div> -->
-
-
-
-					<div class="aps-item-buttons">
-						<label class="aps-filter-btn" data-title="SONY A7R III A">
-							<input type="checkbox" class="aps-compare-cb" name="compare-id-4987" data-ctd="2004" value="4987">
-							<span class="aps-filter-stat"><i class="aps-icon-check"></i></span>
-							<span class="aps-filter-txt">Add to Compare</span>
-						</label>
-						<a class="aps-btn-small aps-add-cart" href="#" data-pid="4987" title="Add to Cart"><i class="aps-icon-cart"></i></a>
-					</div>
-
-
-
-
-
-					
-				</div>
+				
 			
 				<?php // call after controls hook
 				do_action('aps_catalog_after_controls');

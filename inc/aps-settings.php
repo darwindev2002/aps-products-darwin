@@ -479,6 +479,12 @@
 				'icon' => 'web',
 				'desc' => __('Configure permalinks structure for products, comparisons, categories and brands URLs rewrite.', 'aps-text'),
 				'fields' => array(
+					'all-filters-slug' => array(
+						'label' => __('All Filters Search Slug', 'aps-text'),
+						'type' => 'text',
+						'default' => 'search',
+						'desc' => sprintf(__('Enter the All Filters Search Page slug (slug displayed in the url of category archives e.g %s/search/).', 'aps-text'), esc_url($home_url))
+					),
 					'cat-slug' => array(
 						'label' => __('Category Slug', 'aps-text'),
 						'type' => 'text',
@@ -638,6 +644,13 @@
 						'options' => $s_options,
 						'default' => 'aps-sidebar',
 						'desc' => __('Activate or Deactivate sidebars for main catalog page.', 'aps-text')
+					),
+					'all-filters' => array(
+						'label' => __('All Filters Search', 'aps-text'),
+						'type' => 'check',
+						'options' => $s_options,
+						'default' => 'aps-sidebar',
+						'desc' => __('Activate or Deactivate sidebars for filter-all page.', 'aps-text')
 					),
 					'single-product' => array(
 						'label' => __('Product Single', 'aps-text'),
