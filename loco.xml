@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle name="APS Arena Products">
+  <domain name="aps-text">
+    <project name="APS Arena Products" slug="aps-text">
+      <source>
+        <directory>.</directory>
+      </source>
+      <target>
+        <directory>langs</directory>
+      </target>
+      <template>
+        <file>langs/aps-text.pot</file>
+      </template>
+    </project>
+  </domain>
+</bundle>
